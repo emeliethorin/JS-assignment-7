@@ -31,3 +31,16 @@ const words = [
     "loving",
     "north",
   ];
+
+  //GAME
+let randomWord;
+let score = 0;
+let time = 10;
+let difficulty =
+    localStorage.getItem("difficulty") !== null 
+    ? localStorage.getItem("difficulty") 
+    : "medium";
+
+difficultySelect.value = difficulty;
+
+text.focus();
