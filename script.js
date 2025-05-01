@@ -44,3 +44,72 @@ let difficulty =
 difficultySelect.value = difficulty;
 
 text.focus();
+
+function addWordToDOM() {
+    randomWord = getRandomWord();
+    word.innerHTML = randomWord;
+}
+
+function getRandomWord() {
+    return words[Math.floor(Math.random() * words.length)];
+}
+
+function updateScore() {
+    score++;
+    scoreEl.innerHTML = score;
+}
+
+const timeInterval = setInterval(updateTime, 1000);
+
+function updateTime() {
+    time--;
+    timeEl.innerHTML = time + "s";
+    
+    if (time === 0) {
+        clearInterval(timeInterval);
+        gameOver();
+    }
+ }
+
+ text.addEventListener("input", (event) => {
+    const typedText = event.target.value.trim();
+    if (typedText === randomWord) {
+        addWordToDOM();
+        updateScore();
+
+        if (difficulty === "hard") {
+            time += 3;
+        
+        } else if (difficulty === "medium") {
+            time += 4;
+
+        } else {
+            time += 5;
+        }
+
+        updateTime();
+        event.target.value = "";
+    }
+ })
+
+ settingsBtn.addEventListener("click", () => {
+    settings.classList.toggle("hide");
+ });
+
+ settingsForm.addEventListener("change", (event) => {
+    difficulty = event.target.value;
+    localStorage.setItem("difficulty", difficulty);
+ });
+
+//Game over
+function gameOver() {
+    endgameEl.innerHTML = `
+    <h1>Time ran out!</h1> 
+    <p>Your final score is ${score}</p>
+    <button onclick="location.reload()">Start over</button>
+    `;
+    endgameEl.style.display = "flex";
+}
+
+
+addWordToDOM();
