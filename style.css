@@ -1,56 +1,133 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <title>Typing Game</title>
-  </head>
-  <body>
-    <button id="settings-btn" class="settings-btn">
-      <i class="fas fa-cog"></i>
-    </button>
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,600&display=swap");
 
-    <div id="settings" class="settings">
-      <form id="settings-form">
-        <div>
-          <label for="difficulty" class="difficulty">Difficulty:</label>
-          <select id="difficulty">
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-          </select>
-        </div>
-      </form>
-    </div>
+* {
+  box-sizing: border-box;
+}
 
-    <div class="container">
-      <h2>Typing Game</h2>
-      <small>Type the following:</small>
+body {
+  background-color: #b6e6fc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
 
-      <h1 id="word"></h1>
+button {
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 5px 15px;
+}
 
-      <input
-        type="text"
-        id="text"
-        autocomplete="off"
-        placeholder="Type the word here..."
-      />
+select {
+  width: 200px;
+  padding: 3px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 4px;
+  font-weight: 500;
+}
 
-      <p class="time-container">Time left: <span id="time">10s</span></p>
+select:focus,
+button:focus {
+  outline: 0;
+}
 
-      <p class="score-container">Score: <span id="score">0</span></p>
+.settings-btn {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+}
 
-      <div id="end-game-container" class="end-game-container"></div>
-    </div>
+.settings {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #101936;
+  height: 70px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+}
 
-    <script src="script.js"></script>
-  </body>
-</html>
+.settings.hide {
+  transform: translateY(-100%);
+}
+
+.difficulty {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-right: 5px;
+  font-weight: 500;
+}
+
+.container {
+  background-color: #101936;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 3px 5px rgba(196, 196, 196, 0.3);
+  color: #ffffff;
+  position: relative;
+  text-align: center;
+  width: 500px;
+}
+
+h2 {
+  font-family: "Righteous", cursive;
+  font-size: 40px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-color: rgba(112, 216, 248, 0.719);
+  padding: 8px;
+  border-radius: 4px;
+  margin: 0 0 40px;
+}
+
+h1 {
+  margin: 0;
+  padding: 10px;
+  color: #ffde17;
+}
+
+input {
+  border: 0;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 300px;
+  padding: 12px 20px;
+  margin-top: 7px;
+}
+
+.score-container {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+}
+
+.time-container {
+  position: absolute;
+  top: 70px;
+  left: 20px;
+}
+
+.end-game-container {
+  background-color: inherit;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
