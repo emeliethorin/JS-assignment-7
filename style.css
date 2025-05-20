@@ -86,9 +86,11 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 2px;
   background-color: rgba(112, 216, 248, 0.719);
+  color: white;
   padding: 8px;
   border-radius: 4px;
   margin: 0 0 40px;
+  text-shadow: 0 0 10px rgba(16, 25, 54, 0.8), 0 0 20px rgba(16, 25, 54, 0.6);
 }
 
 h1 {
